@@ -1,0 +1,103 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffb3ba, #bae1ff);
+    padding: 40px;
+}
+
+.container {
+    background: white;
+    padding: 25px;
+    max-width: 500px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+
+.form-grid {
+    display: grid;
+    gap: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #444;
+}
+
+
+input[type="text"],
+input[type="email"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #aaa;
+    border-radius: 6px;
+    background: #faffff;
+    transition: 0.3s;
+}
+
+
+input:hover,
+select:hover {
+    border-color: #ff7f50;
+}
+
+
+input:focus,
+select:focus {
+    border-color: #ff4500;
+    background: #fff0e6;
+    outline: none;
+}
+
+
+.checkbox-group label {
+    display: block;
+    color: #333;
+}
+
+
+.buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+}
+
+
+.submit-btn {
+    background: #28a745;
+}
+.submit-btn:hover {
+    background: #1f8b39;
+}
+
+
+.reset-btn {
+    background: #e63946;
+}
+.reset-btn:hover {
+    background: #c62832;
+}
+
+
+label::after {
+    content: " *";
+    color: #ff4500;
+}

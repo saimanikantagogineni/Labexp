@@ -1,0 +1,56 @@
+:root {
+    --font-main: Poppins, Arial, sans-serif;
+    --space: 16px;
+    --radius: 12px;
+
+    --bg: #fff7d1;
+    --text: #2e2e2e;
+    --card-bg: #ffe9a8;
+    --button-bg: #ff6f61;
+    --button-text: #ffffff;
+}
+
+.dark-theme {
+    --bg: #2b2b40;
+    --text: #ffffff;
+    --card-bg: #3a3a55;
+    --button-bg: #ffb400;
+    --button-text: #000000;
+}
+
+body {
+    font-family: var(--font-main);
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: var(--space);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space);
+}
+
+button {
+    background: var(--button-bg);
+    color: var(--button-text);
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+main {
+    display: grid;
+    gap: var(--space);
+}
+
+.card {
+    background: var(--card-bg);
+    padding: var(--space);
+    border-radius: var(--radius);
+    font-size: 1.1rem;
+}

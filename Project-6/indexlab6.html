@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greeting Page</title>
+    <link rel="stylesheet" href="stylelab6.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Personalized Greeting</h2>
+
+    <input type="text" id="nameInput" placeholder="Enter your name">
+
+    <select id="moodInput">
+        <option value="">Select your mood</option>
+        <option value="happy">Happy</option>
+        <option value="sad">Sad</option>
+        <option value="excited">Excited</option>
+        <option value="tired">Tired</option>
+    </select>
+
+    <button id="btn">Show Greeting</button>
+
+    <p id="message"></p>
+</div>
+
+<script>
+    const btn = document.getElementById("btn");
+    const message = document.getElementById("message");
+
+    btn.onclick = () => {
+        let name = document.getElementById("nameInput").value;
+        let mood = document.getElementById("moodInput").value;
+
+        if (name === "" || mood === "") {
+            message.textContent = "Please enter your name and mood.";
+        } else {
+            message.textContent = `Hello, ${name}! You seem ${mood} today.`;
+        }
+
+        message.classList.add("show");
+    };
+</script>
+
+</body>
+</html>

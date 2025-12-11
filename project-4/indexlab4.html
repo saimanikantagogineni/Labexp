@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Themed Layout</title>
+    <link rel="stylesheet" href="stylelab4.css">
+</head>
+<body class="light-theme">
+
+    <header>
+        <h1>Startup Dashboard</h1>
+        <button id="themeBtn">Switch Theme</button>
+    </header>
+
+    <main>
+        <section class="card">
+            <h2>Welcome</h2>
+            <p>This is a clean layout with theme switching.</p>
+        </section>
+
+        <section class="card">
+            <h2>Updates</h2>
+            <p>SCSS and CSS custom properties make styling easier.</p>
+        </section>
+    </main>
+
+<script>
+    const btn = document.getElementById("themeBtn");
+    const body = document.body;
+
+    btn.onclick = () => {
+        body.classList.toggle("dark-theme");
+        body.classList.toggle("light-theme");
+    };
+</script>
+
+</body>
+</html>
