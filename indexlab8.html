@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Showcase</title>
+    <link rel="stylesheet" href="stylelab8.css">
+</head>
+<body class="light-theme">
+
+<div class="container">
+    <h2>Product Showcase</h2>
+    <div id="productList" class="products"></div>
+</div>
+
+<script>
+    class Product {
+        constructor(name, price) {
+            this.name = name;
+            this.price = price;
+        }
+
+        info() {
+            return `${this.name} - $${this.price}`;
+        }
+    }
+
+    class Phone extends Product {
+        constructor(name, price, brand) {
+            super(name, price);
+            this.brand = brand;
+        }
+    }
+
+    const items = [
+        new Phone("Galaxy S21", 79999, "Samsung"),
+        new Phone("iPhone 14", 99999, "Apple"),
+        new Phone("Pixel 7", 59999, "Google")
+    ];
+
+    const productList = document.getElementById("productList");
+
+    items.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "product-card";
+
+        div.innerHTML = `
+            <h3>${item.name}</h3>
+            <p>Brand: ${item.brand}</p>
+            <p>Price: $${item.price}</p>
+        `;
+
+        productList.appendChild(div);
+    });
+</script>
+
+</body>
+</html>

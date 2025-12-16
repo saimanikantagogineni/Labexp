@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Experiment 9 – Async API Calls</title>
+    <link rel="stylesheet" href="styleslab9.css">
+</head>
+<body>
+
+    <h2>🌍 Popular Travel Destinations</h2>
+    <button id="loadBtn">Load Destinations</button>
+
+    <div id="destinations"></div>
+
+    <script>
+       
+        async function fetchDestinations() {
+            
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve(["Goa", "Kerala", "Hyderabad", "Vijayawada", "Bengaluru"]);
+                }, 1000); 
+            });
+        }
+
+       
+        function loadDestinations() {
+            const container = document.getElementById("destinations");
+            container.innerHTML = "<p class='loading'>Loading...</p>";
+
+            fetchDestinations()
+                .then(destinations => {
+                    container.innerHTML = "";
+                    destinations.forEach(place => {
+                        const card = document.createElement("div");
+                        card.className = "destination-card";
+                        card.textContent = place;
+                        container.appendChild(card);
+                    });
+                    return "Destinations loaded successfully!";
+                })
+                .then(message => {
+                    console.log(message); 
+                })
+                .catch(() => {
+                    container.innerHTML = "<p class='error'>Failed to load data</p>";
+                });
+        }
+
+        document.getElementById("loadBtn").addEventListener("click", loadDestinations);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Dashboard</title>
+    <link rel="stylesheet" href="styleslab10.css">
+</head>
+<body>
+
+<h2>Task Dashboard</h2>
+
+<input type="text" id="taskInput" placeholder="Enter task">
+<button id="addBtn">Add</button>
+
+<select id="filter">
+    <option value="all">All</option>
+    <option value="done">Completed</option>
+    <option value="pending">Pending</option>
+</select>
+
+<ul id="taskList"></ul>
+
+<button id="loadData">Load External Data</button>
+<div id="data"></div>
+
+<script>
+const taskInput = document.getElementById("taskInput")
+const addBtn = document.getElementById("addBtn")
+const taskList = document.getElementById("taskList")
+const filter = document.getElementById("filter")
+const loadData = document.getElementById("loadData")
+const dataDiv = document.getElementById("data")
+
+let tasks = JSON.parse(localStorage.getItem("tasks")) || []
+
+function saveTasks() {
+    localStorage.setItem("tasks", JSON.stringify(tasks))
+}
+
+function showTasks() {
+    taskList.innerHTML = ""
+    tasks.forEach((task, index) => {
+        if (filter.value === "done" && !task.done) return
+        if (filter.value === "pending" && task.done) return
+        const li = document.createElement("li")
+        li.textContent = task.text
+        li.onclick = () => {
+            tasks[index].done = !tasks[index].done
+            saveTasks()
+            showTasks()
+        }
+        if (task.done) li.className = "done"
+        taskList.appendChild(li)
+    })
+}
+
+addBtn.onclick = () => {
+    if (taskInput.value !== "") {
+        tasks.push({ text: taskInput.value, done: false })
+        taskInput.value = ""
+        saveTasks()
+        showTasks()
+    }
+}
+
+filter.onchange = showTasks
+
+loadData.onclick = async () => {
+    dataDiv.textContent = "Loading..."
+    try {
+        const res = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=3")
+        if (!res.ok) throw new Error()
+        const result = await res.json()
+        dataDiv.innerHTML = ""
+        result.forEach(item => {
+            const p = document.createElement("p")
+            p.textContent = item.title
+            dataDiv.appendChild(p)
+        })
+    } catch {
+        dataDiv.textContent = "Error loading data"
+    }
+}
+
+showTasks()
+</script>
+
+</body>
+</html>
